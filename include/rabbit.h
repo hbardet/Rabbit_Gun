@@ -62,17 +62,17 @@ typedef struct player_struct {
 
 sfRenderWindow *setup_window(void);
 sfVector2i get_middle_screen(sfVideoMode md);
-void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player);
+void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player,sprite_t *sprite);
 sfSprite *make_player(void);
 player_struct_t *make_struct_player(void);
 int memo_key_released(player_struct_t *player, sfKeyEvent key_pressed);
 int memo_key_pressed(player_struct_t *player, sfKeyEvent key_pressed);
 controle_key_t *make_struct_controle(void);
 int detect_movement(player_struct_t *player);
-
-
-
-
+int detect_movement(player_struct_t *player, sfKeyEvent key_pressed,sprite_t *sprite);
+int my_colorcmp(sfColor color1, sfColor color2);
+sfColor get_pixel_color(sprite_t *sprite, int x, int y);
+int colision_player(sprite_t *sprite,int x, int y);
 
 
 sprite_t *map_load_one(void);

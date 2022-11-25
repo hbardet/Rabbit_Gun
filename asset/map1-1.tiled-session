@@ -6,25 +6,26 @@
     "activeFile": "",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "/home/sramstein/GameJam/Rabbit_Gun/map/blue_pixel.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "/home/sramstein/GameJam/Rabbit_Gun/map/map1-1.tmx": {
-            "scale": 2,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 205.75,
-                "y": 113.5
+                "x": 146.5,
+                "y": 111.99999999999999
             }
         },
         "/home/sramstein/GameJam/Rabbit_Gun/map/map1-2-col.tmx": {
             "scale": 3.49421875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 160.12162947726154,
-                "y": 96.15883378795333
+                "x": 80.70473550060368,
+                "y": 96.30192729061397
             }
         },
         "/home/sramstein/GameJam/Rabbit_Gun/map/map1-2.tmx": {

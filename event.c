@@ -12,7 +12,7 @@ void close_window(sfRenderWindow *window)
     sfRenderWindow_close(window);    
 }
 
-void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player)
+void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player,sprite_t *sprite)
 {  
     while(sfRenderWindow_pollEvent(window, &event)){
         if (event.type == sfEvtClosed)
