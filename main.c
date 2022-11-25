@@ -5,12 +5,10 @@
 ** main.c
 */
 #include "rabbit.h"
-
 #include <SFML/Graphics.h>
 
 int main()
 {
-    sfRender
     sfRenderWindow *window = setup_window();
     sfEvent event;
     
@@ -18,7 +16,6 @@ int main()
         analyse_events(window ,event);
         sfRenderWindow_display(window);
     }
-    sf
     sfRenderWindow_destroy(window);
     return (0);
 }
