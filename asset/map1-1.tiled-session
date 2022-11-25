@@ -1,0 +1,46 @@
+{
+    "fileStates": {
+        "/home/sramstein/GameJam/Rabbit_Gun/map/map1-1.tmx": {
+            "scale": 3.49421875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 155.54263739212092,
+                "y": 91.5798417028127
+            }
+        },
+        "/home/sramstein/GameJam/Rabbit_Gun/map/map1-2.tmx": {
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 184.5,
+                "y": 89.99999999999999
+            }
+        },
+        "images/03/Sample.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "images/03/Tiles/tiles_map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "images/03/tiles_map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 11
+        },
+        "images/03/tileset.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "recentFiles": [
+        "/home/sramstein/GameJam/Rabbit_Gun/map/map1-2.tmx",
+        "/home/sramstein/GameJam/Rabbit_Gun/map/map1-1.tmx",
+        "images/03/Tiles/tiles_map.tsx",
+        "images/03/tiles_map.tsx",
+        "images/03/Sample.tsx",
+        "images/03/tileset.tsx"
+    ]
+}
