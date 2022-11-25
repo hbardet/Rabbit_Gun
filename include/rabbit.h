@@ -42,6 +42,10 @@ typedef struct sound {
     sfSoundBuffer *hit_buffer;
 }sound_t;
 
+typedef struct player_struct {
+    sfSprite *player;
+}player_struct_t;
+
 sfRenderWindow *setup_window(void);
 sfVector2i get_middle_screen(sfVideoMode md);
 void analyse_events(sfRenderWindow *window, sfEvent event);
