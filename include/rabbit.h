@@ -45,6 +45,8 @@ typedef struct sound {
 sfRenderWindow *setup_window(void);
 sfVector2i get_middle_screen(sfVideoMode md);
 void analyse_events(sfRenderWindow *window, sfEvent event);
+sfSprite *make_player(void);
+
 
 
 #endif /* RABBIT_H_ */

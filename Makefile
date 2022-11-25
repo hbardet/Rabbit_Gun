@@ -7,7 +7,8 @@
 SRC     =   ./event.c \
 			./main.c \
 			./setup_windows.c \
-			./map1.c
+			./map1.c \
+			./player.c
 
 OBJ     =     $(SRC:.c=.o)
 
