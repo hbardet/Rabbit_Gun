@@ -4,16 +4,20 @@
 ## File description:
 ## root
 ##
-SRC     =   main.c
+SRC     =   ./event.c \
+			./main.c \
+			./setup_windows.c \
 
 OBJ     =     $(SRC:.c=.o)
 
 NAME 	=	rabbitgun
 
-CFLAGS_csfml += -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio
+CFLAGS 	+= -Wall -I./include -g
+
+CFCSFML += -lcsfml-graphics -lcsfml-system -lcsfml-window -lcsfml-audio -I./include
 
 all: $(OBJ)
-	gcc -o ${NAME} $(OBJ)  $(CFLAGS_csfml)
+	gcc -o ${NAME} $(OBJ) $(CFCSFML) $(CFLAGS)
 
 clean:
 	rm -f $(OBJ)
@@ -23,3 +27,6 @@ fclean: clean
 
 re :	fclean
 	make all
+
+exec : re
+	./rabbitgun

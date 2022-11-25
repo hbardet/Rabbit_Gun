@@ -10,8 +10,9 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 
-#ifndef size_
-    #define size_
+
+#ifndef RABBIT_H_
+    #define RABBIT_H_
 typedef struct sprite sprite;
 struct sprite {
     sfSprite *sprite_duck;
@@ -41,4 +42,10 @@ struct sound {
     sfSound *hit;
     sfSoundBuffer *hit_buffer;
 };
-#endif /* size */
+
+sfRenderWindow *setup_window(void);
+sfVector2i get_middle_screen(sfVideoMode md);
+void analyse_events(sfRenderWindow *window, sfEvent event);
+
+
+#endif /* RABBIT_H_ */
