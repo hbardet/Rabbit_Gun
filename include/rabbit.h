@@ -10,7 +10,10 @@
 #include <SFML/System.h>
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
+#include <stdbool.h>     
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #ifndef RABBIT_H_
     #define RABBIT_H_
@@ -44,12 +47,17 @@ typedef struct sound {
 }sound_t;
 
 typedef struct controle_key{
-    //sfKeyCode upKey = sfKeyCode.sfKeyZ;
+   
+   bool move_up;
+   bool move_down;
+   bool move_left;
+   bool move_right;
     
 }controle_key_t;
 
 typedef struct player_struct {
     sfSprite *sprite_player;
+    controle_key_t *controle;
 }player_struct_t;
 
 sfRenderWindow *setup_window(void);
@@ -57,7 +65,13 @@ sfVector2i get_middle_screen(sfVideoMode md);
 void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player);
 sfSprite *make_player(void);
 player_struct_t *make_struct_player(void);
-int detect_movement(player_struct_t *player, sfKeyEvent key_pressed);
+int memo_key_released(player_struct_t *player, sfKeyEvent key_pressed);
+int memo_key_pressed(player_struct_t *player, sfKeyEvent key_pressed);
+controle_key_t *make_struct_controle(void);
+int detect_movement(player_struct_t *player);
+
+
+
 
 
 

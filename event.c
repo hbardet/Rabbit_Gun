@@ -17,7 +17,9 @@ void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *play
     while(sfRenderWindow_pollEvent(window, &event)){
         if (event.type == sfEvtClosed)
             close_window(window);
+        if (event.type == sfEvtKeyReleased)
+            memo_key_released(player, event.key);
         if (event.type == sfEvtKeyPressed)
-            detect_movement(player, event.key);
+            memo_key_pressed(player, event.key);
     }
 }

@@ -25,6 +25,8 @@ player_struct_t *make_struct_player(void)
 {
     player_struct_t *new_player = malloc(sizeof(*new_player));
 
+
     new_player->sprite_player = make_player();
+    new_player->controle = make_struct_controle();
     return (new_player);
 }
