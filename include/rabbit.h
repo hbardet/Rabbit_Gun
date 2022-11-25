@@ -5,6 +5,7 @@
 ** struct
 */
 
+#include <stdlib.h>
 #include <SFML/Window.h>
 #include <SFML/System.h>
 #include <SFML/Graphics.h>
@@ -13,6 +14,7 @@
 
 #ifndef RABBIT_H_
     #define RABBIT_H_
+    #define SPEED_PLAYER = 1.0
 typedef struct sprite {
     sfSprite *sprite_duck;
     sfTexture *texture_duck;
@@ -33,7 +35,7 @@ typedef struct clock {
     int best_score;
     sfClock *clock;
     sfClock *clock_move;
-}clock_t;
+}clok_t;
 
 typedef struct sound {
     sfSound *fire_shot;
@@ -42,14 +44,22 @@ typedef struct sound {
     sfSoundBuffer *hit_buffer;
 }sound_t;
 
+typedef struct controle_key{
+    //sfKeyCode upKey = sfKeyCode.sfKeyZ;
+    
+}controle_key_t;
+
 typedef struct player_struct {
-    sfSprite *player;
+    sfSprite *sprite_player;
 }player_struct_t;
 
 sfRenderWindow *setup_window(void);
 sfVector2i get_middle_screen(sfVideoMode md);
-void analyse_events(sfRenderWindow *window, sfEvent event);
+void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player);
 sfSprite *make_player(void);
+player_struct_t *make_struct_player(void);
+int detect_movement(player_struct_t *player, sfKeyEvent key_pressed);
+
 
 
 

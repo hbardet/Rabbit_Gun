@@ -21,3 +21,10 @@ sfSprite *make_player(void)
     return (player);
 }
 
+player_struct_t *make_struct_player(void)
+{
+    player_struct_t *new_player = malloc(sizeof(*new_player));
+
+    new_player->sprite_player = make_player();
+    return (new_player);
+}
