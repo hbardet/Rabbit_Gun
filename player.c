@@ -16,6 +16,7 @@ sfSprite *make_player(void)
     sfIntRect rect = {0,64,16,16};
     sfSprite_setTextureRect(player,rect);
     sfVector2f scale = {3.0,3.0};
+    
     sfSprite_scale(player,scale); 
 
     return (player);
