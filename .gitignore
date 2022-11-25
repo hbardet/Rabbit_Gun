@@ -42,6 +42,9 @@
 *.idb
 *.pdb
 
+#bin
+rabbitgun
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd

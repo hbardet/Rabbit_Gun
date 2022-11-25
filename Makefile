@@ -28,5 +28,6 @@ fclean: clean
 re :	fclean
 	make all
 
-exec : re
+exec : re 
+	make clean
 	./rabbitgun
