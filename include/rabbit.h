@@ -10,16 +10,15 @@
 #include <SFML/System.h>
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
-
+#include <stdio.h>
 
 #ifndef RABBIT_H_
     #define RABBIT_H_
     #define SPEED_PLAYER = 1.0
 typedef struct sprite {
-    sfSprite *sprite_duck;
-    sfTexture *texture_duck;
     sfSprite *sprite_background;
     sfTexture *texture_background;
+    sfImage *image_background;
 }sprite_t;
 
 typedef struct text{
@@ -30,7 +29,7 @@ typedef struct text{
     sfText *text_best_score;
 }text_t;
 
-typedef struct clock {
+typedef struct clok {
     int score_char;
     int best_score;
     sfClock *clock;
@@ -62,5 +61,6 @@ int detect_movement(player_struct_t *player, sfKeyEvent key_pressed);
 
 
 
+sprite_t *map_load_one(void);
 
 #endif /* RABBIT_H_ */
