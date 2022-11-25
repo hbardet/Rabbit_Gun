@@ -7,14 +7,10 @@
 SRC     =   ./event.c \
 			./main.c \
 			./setup_windows.c \
-<<<<<<< HEAD
 			./map1.c \
 			./player.c \
-			./player_movement.c
-=======
-			./map1.c\
+			./player_movement.c\
 			./map_colision.c
->>>>>>> 908cb96 (cmp color)
 
 OBJ     =     $(SRC:.c=.o)
 

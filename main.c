@@ -15,9 +15,9 @@ int main()
     sprite_t *sprite = map_load_one();
     while (sfRenderWindow_isOpen(window)){
         analyse_events(window, event, player_one);
+        sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
         sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
         sfRenderWindow_display(window);
-        sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
     }
     sfRenderWindow_destroy(window);
     return (0);
