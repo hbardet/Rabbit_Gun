@@ -32,6 +32,7 @@ player_struct_t *make_struct_player(void)
     new_player->clock_player = sfClock_create();
     new_player->bullet = malloc(sizeof(*new_player->bullet));
     new_player->bullet = NULL;
+    new_player->can_shoot = true;
 
     return (new_player);
 }

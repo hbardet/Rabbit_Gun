@@ -58,9 +58,10 @@ typedef struct controle_key{
 typedef struct bullet_list{
 
     sfIntRect rect;
-    sfVector2f *position;
+    sfVector2f position;
     bool touching;
     sfSprite *bullet_sprite;
+    sfClock *clock;
     int num_bullet;
     struct bullet_list *next;
 }bullet_list_t;
@@ -72,7 +73,7 @@ typedef struct player_struct {
     sfIntRect rect;
     controle_key_t *controle;
     sfClock *clock_player;
-
+    bool can_shoot;
     bullet_list_t *bullet; 
 }player_struct_t;
 
@@ -99,6 +100,11 @@ int my_struct_len(bullet_list_t *list);
 int display_bullet_on_screen(sfRenderWindow *window, player_struct_t *player);
 int move_bullet(player_struct_t *player);
 int manage_bullet(sfRenderWindow *window, player_struct_t *player);
+int destroy_bullet(player_struct_t *player);
+int delete_bullet_node(bullet_list_t **list);
+bullet_list_t *delete_last_node(bullet_list_t **list);
+
+
 
 
 
