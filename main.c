@@ -24,11 +24,7 @@ int main()
         sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
         sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
         sfRenderWindow_display(window);
-<<<<<<< HEAD
-        
-=======
         sfRenderWindow_clear(window, sfBlack);
->>>>>>> 6389b53 (Gravity + spritesheet)
     }
     sfRenderWindow_destroy(window);
     return (0);
