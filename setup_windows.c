@@ -22,7 +22,7 @@ sfVector2i get_middle_screen(sfVideoMode md)
 sfRenderWindow *setup_window(void)
 {
     sfVideoMode mode = {1280,720,32};
-    sfRenderWindow *window = sfRenderWindow_create(mode, "Rabbit Guns", sfClose, NULL);
+    sfRenderWindow *window = sfRenderWindow_create(mode, "Rabbit Guns", sfClose | sfResize , NULL);
     sfRenderWindow_setFramerateLimit(window, 32);
     sfVector2i posi = get_middle_screen(mode);
     sfRenderWindow_setPosition(window, posi);

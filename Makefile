@@ -12,7 +12,8 @@ SRC     =   ./event.c \
 			./player_movement.c\
 			./shoot_player.c \
 			./map_colision.c\
-			./clock.c
+			./clock.c \
+			./menu.c \
 
 OBJ     =     $(SRC:.c=.o)
 

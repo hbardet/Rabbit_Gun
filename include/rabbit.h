@@ -22,6 +22,7 @@ typedef struct sprite {
     sfSprite *sprite_background;
     sfTexture *texture_background;
     sfImage *image_background;
+    int scene;
 }sprite_t;
 
 typedef struct text{
@@ -113,9 +114,8 @@ int manage_bullet(sfRenderWindow *window, player_struct_t *player,player_struct_
 int destroy_bullet(player_struct_t *player);
 int delete_bullet_node(bullet_list_t **list);
 bullet_list_t *delete_last_node(bullet_list_t **list);
-
-
-
+char scene_handler(sfRenderWindow* window, char scene, sfEvent event, sprite_t *sprite, player_struct_t *player_one,player_struct_t *player_two);
+void menu(sfRenderWindow *);
 
 
 

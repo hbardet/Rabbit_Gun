@@ -7,8 +7,10 @@
 
 #include "rabbit.h"
 
+
 int main()
 {
+    char scene = '0';
     sfRenderWindow *window = setup_window();
     sfEvent event;
     sfClock *clock = sfClock_create();
@@ -21,6 +23,7 @@ int main()
     sfMusic_setLoop(music,sfRenderWindow_isOpen(window));
     sfMusic_play(music);
     while (sfRenderWindow_isOpen(window)){
+        scene = scene_handler(window,scene,event,sprite,player_one, player_two);
         if (player_one->controle->move_down || player_one->controle->move_left || player_one->controle->move_right)
             clock_sprite(clock,player_one);
         else
@@ -32,18 +35,7 @@ int main()
         analyse_events(window, event, player_one,player_two);
         detect_movement(player_one,sprite);
         detect_movement(player_two,sprite);
-        if (player_one->health != 0 && player_two->health != 0) {
-            sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
-            bullet_shoot(player_one, player_two);
-            if (my_struct_len(player_two->bullet) > 0)
-                manage_bullet(window, player_two,player_one);
-            if (my_struct_len(player_one->bullet) > 0)
-                manage_bullet(window, player_one,player_two);
-            sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
-            sfRenderWindow_drawSprite(window,player_one->sprite_health,NULL);
-            sfRenderWindow_drawSprite(window,player_two->sprite_player,NULL);
-            sfRenderWindow_drawSprite(window,player_two->sprite_health,NULL);
-        } else if (player_one->health != 0){
+        if (player_two->health == 0) {
             sfText *text = sfText_create();
             sfFont *font = sfFont_createFromFile("Allstar-Regular.ttf");
             sfVector2f vector = {240, 300};
@@ -53,7 +45,7 @@ int main()
             sfText_setFont(text,font);
             sfRenderWindow_clear(window,sfBlue);
             sfRenderWindow_drawText(window,text,NULL);
-        } else {
+        } else if (player_one->health == 0) {
             sfText *text = sfText_create();
             sfFont *font = sfFont_createFromFile("Allstar-Regular.ttf");
             sfVector2f vector = {240, 300};

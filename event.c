@@ -7,6 +7,8 @@
 
 #include "rabbit.h"
 
+void if_click(sfRenderWindow*, sfEvent);
+
 void close_window(sfRenderWindow *window)
 {
     sfRenderWindow_close(window);    
