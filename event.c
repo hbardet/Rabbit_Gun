@@ -20,7 +20,10 @@ void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *play
         if (event.type == sfEvtKeyReleased)
             memo_key_released(player_one,player_two, event.key);
         if (event.type == sfEvtKeyPressed){
-            memo_key_pressed(player_one, player_two, event.key);
+            if (event.key.code == sfKeyEscape)
+                close_window(window);
+            else
+                memo_key_pressed(player_one, player_two, event.key);
         }
     }
 }

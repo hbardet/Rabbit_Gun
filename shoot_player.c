@@ -12,12 +12,12 @@
 
 int manage_bullet(sfRenderWindow *window, player_struct_t *player,player_struct_t *ennemy)
 {
-    move_bullet(player,ennemy);
+    move_bullet(player,ennemy,window);
     display_bullet_on_screen(window, player);
     return (0);
 }
 
-int move_bullet(player_struct_t *player,player_struct_t *ennemy)
+int move_bullet(player_struct_t *player,player_struct_t *ennemy,sfRenderWindow *window)
 {
     bullet_list_t *tmp = player->bullet;
     int size;
@@ -25,10 +25,9 @@ int move_bullet(player_struct_t *player,player_struct_t *ennemy)
         if ((tmp->position.x + tmp->velo.x > 1280 + (16 * 4) || tmp->position.x + tmp->velo.x < 0 - (16 * 4))
             && tmp->touching == false) {
             tmp->touching = true;
-        } else if (tmp->position.x >= (sfSprite_getPosition(ennemy->sprite_player).x) && tmp->position.x <= (sfSprite_getPosition(ennemy->sprite_player).x + 12) && tmp->position.y - 12 == (sfSprite_getPosition(ennemy->sprite_player).y)) {
+        } else if ((tmp->position.x >= (sfSprite_getPosition(ennemy->sprite_player).x) && tmp->position.x <= (sfSprite_getPosition(ennemy->sprite_player).x + 12)) && (tmp->position.y - 26 == (sfSprite_getPosition(ennemy->sprite_player).y)) || (tmp->position.y - 28 == (sfSprite_getPosition(ennemy->sprite_player).y))) {
             tmp->touching = true;
             ennemy->health -= 1;
-            printf("%d\n",ennemy->health);
             move_rect(&ennemy->rect_health,64,320);
             sfSprite_setTextureRect(ennemy->sprite_health,ennemy->rect_health);
             tmp->position.x += tmp->velo.x;

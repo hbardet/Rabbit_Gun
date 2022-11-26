@@ -108,7 +108,7 @@ bullet_list_t *add_node_bullet(player_struct_t *player);
 int create_bullet(bullet_list_t **bullet, player_struct_t *player);
 int my_struct_len(bullet_list_t *list);
 int display_bullet_on_screen(sfRenderWindow *window, player_struct_t *player);
-int move_bullet(player_struct_t *player,player_struct_t *ennemy);
+int move_bullet(player_struct_t *player,player_struct_t *ennemy,sfRenderWindow *window);
 int manage_bullet(sfRenderWindow *window, player_struct_t *player,player_struct_t *ennemy);
 int destroy_bullet(player_struct_t *player);
 int delete_bullet_node(bullet_list_t **list);

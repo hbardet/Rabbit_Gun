@@ -60,7 +60,6 @@ int memo_key_released(player_struct_t *player_one, player_struct_t *player_two, 
         player_one->controle->move_right = false;
     if(key_released.code == sfKeySpace)
         player_one->controle->shooting = false;
-    
 
     if(key_released.code == sfKeyUp)
         player_two->controle->move_up = false;

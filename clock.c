@@ -22,7 +22,7 @@ void clock_sprite(sfClock *clock, player_struct_t *player)
     time = sfClock_getElapsedTime(clock);
     seconds = time.microseconds / 1000000.0;
     if (seconds > 0.3) {
-        move_rect(&player->rect,16,32);
+        move_rect(&player->rect,32,32);
         sfSprite_setTextureRect(player->sprite_player,player->rect);
         sfClock_restart(clock);
     }
