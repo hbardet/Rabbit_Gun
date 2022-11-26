@@ -35,7 +35,7 @@ int main()
         analyse_events(window, event, player_one,player_two);
         detect_movement(player_one,sprite);
         detect_movement(player_two,sprite);
-        if (player_two->health == 0) {
+        if (player_two->health <= 0) {
             sfText *text = sfText_create();
             sfFont *font = sfFont_createFromFile("Allstar-Regular.ttf");
             sfVector2f vector = {240, 300};
@@ -45,7 +45,7 @@ int main()
             sfText_setFont(text,font);
             sfRenderWindow_clear(window,sfBlue);
             sfRenderWindow_drawText(window,text,NULL);
-        } else if (player_one->health == 0) {
+        } else if (player_one->health <= 0) {
             sfText *text = sfText_create();
             sfFont *font = sfFont_createFromFile("Allstar-Regular.ttf");
             sfVector2f vector = {240, 300};
