@@ -15,7 +15,8 @@ controle_key_t *make_struct_controle(void)
     new_controle->move_up = false; 
     new_controle->move_down = false; 
     new_controle->move_left = false; 
-    new_controle->move_right = false; 
+    new_controle->move_right = false;
+    new_controle->shooting = false;
     return (new_controle);
 }
 
@@ -30,6 +31,8 @@ int memo_key_pressed(player_struct_t *player_one, player_struct_t *player_two, s
         player_one->controle->move_left = true;
     if(key_pressed.code == sfKeyD)
         player_one->controle->move_right = true;
+    if(key_pressed.code == sfKeySpace)
+        player_one->controle->shooting = true;
 
     if(key_pressed.code == sfKeyUp)
         player_two->controle->move_up = true;
@@ -39,6 +42,8 @@ int memo_key_pressed(player_struct_t *player_one, player_struct_t *player_two, s
         player_two->controle->move_left = true;
     if(key_pressed.code == sfKeyRight)
         player_two->controle->move_right = true;
+    if(key_pressed.code == sfKeyRShift)
+        player_two->controle->shooting = true;
 
     return (0);
 }
@@ -53,6 +58,9 @@ int memo_key_released(player_struct_t *player_one, player_struct_t *player_two, 
         player_one->controle->move_left = false;
     if(key_released.code == sfKeyD)
         player_one->controle->move_right = false;
+    if(key_released.code == sfKeySpace)
+        player_one->controle->shooting = false;
+    
 
     if(key_released.code == sfKeyUp)
         player_two->controle->move_up = false;
@@ -62,6 +70,8 @@ int memo_key_released(player_struct_t *player_one, player_struct_t *player_two, 
         player_two->controle->move_left = false;
     if(key_released.code == sfKeyRight)
         player_two->controle->move_right = false;
+    if(key_released.code == sfKeyRShift)
+        player_two->controle->shooting = false;
     return (0);
 }
 

@@ -7,7 +7,8 @@
 
 #include "rabbit.h"
 
-
+#define SPEED_BULLET 20
+#define CD_SHOOT 0.1
 
 int manage_bullet(sfRenderWindow *window, player_struct_t *player)
 {
@@ -54,10 +55,22 @@ int my_struct_len(bullet_list_t *list)
     return (size);
 }
 
-int bullet_shoot(player_struct_t *player, sfMouseButtonEvent mousse_click)
+
+
+int bullet_shoot(player_struct_t *player_one, player_struct_t *player_two)
 {   
-    if (mousse_click.button == sfMouseLeft)
-        add_node_bullet(player);
+    sfTime time = sfClock_getElapsedTime(player_one->clock_shooting);
+    float seconds = sfTime_asSeconds(time);
+    if (player_one->controle->shooting && seconds > CD_SHOOT){
+        add_node_bullet(player_one);
+        sfClock_restart(player_one->clock_shooting);
+    }      
+    time = sfClock_getElapsedTime(player_two->clock_shooting);
+    seconds = sfTime_asSeconds(time);
+    if (player_two->controle->shooting && seconds > CD_SHOOT){
+        add_node_bullet(player_two);
+        sfClock_restart(player_two->clock_shooting);
+    }
     return (0);
 }
 
@@ -86,13 +99,13 @@ int create_bullet(bullet_list_t **bullet, player_struct_t *player)
     sfTexture *texture_bullet = sfTexture_createFromFile("asset/sprite_sheet/bullet_sprite_sheet.png", NULL);
     sfIntRect intRect = {16, 16 * player->orientation_player,16,16};
     sfVector2f cordo_player = sfSprite_getPosition(player->sprite_player);
-    cordo_player.x += 50;
-    cordo_player.y += 10;
+    cordo_player.x += (player->orientation_player) ? (-13) : (48);
+    cordo_player.y += 26;
     new_bullet->rect = intRect;
     sfSprite_setTexture(new_bullet->bullet_sprite, texture_bullet, sfTrue);
     sfSprite_setTextureRect(new_bullet->bullet_sprite, new_bullet->rect);
     new_bullet->clock = sfClock_create();
-    sfVector2f scale = {4.0,4.0};
+    sfVector2f scale = {2.0,2.0};
     sfSprite_scale(new_bullet->bullet_sprite,scale); 
     sfSprite_setPosition(new_bullet->bullet_sprite, cordo_player);
     sfVector2f position_sprite = sfSprite_getPosition(new_bullet->bullet_sprite);
@@ -100,7 +113,7 @@ int create_bullet(bullet_list_t **bullet, player_struct_t *player)
     new_bullet->touching = false;
     sfVector2f velo = {0,0};
     new_bullet->velo = velo;
-    new_bullet->velo.x = (player->orientation_player) ? (-12) : (12);
+    new_bullet->velo.x = (player->orientation_player) ? (-1 * SPEED_BULLET) : (SPEED_BULLET);
     new_bullet->next = *bullet;
     *bullet = new_bullet;
     return (0);

@@ -33,13 +33,17 @@ int main()
         detect_movement(player_one,sprite);
         detect_movement(player_two,sprite);
         sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
+        bullet_shoot(player_one, player_two);
         if (my_struct_len(player_one->bullet) > 0)
             manage_bullet(window, player_one);
+        if (my_struct_len(player_two->bullet) > 0)
+            manage_bullet(window, player_two);
         sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
         sfRenderWindow_drawSprite(window,player_two->sprite_player,NULL);
         sfRenderWindow_display(window);
         
         sfRenderWindow_clear(window, sfBlack);
+        
     }
     sfRenderWindow_destroy(window);
     return (0);

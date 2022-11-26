@@ -48,11 +48,12 @@ typedef struct sound {
 
 typedef struct controle_key{
    
-   bool move_up;
-   bool move_down;
-   bool move_left;
-   bool move_right;
-    
+    bool move_up;
+    bool move_down;
+    bool move_left;
+    bool move_right;
+    bool shooting;
+
 }controle_key_t;
 
 typedef struct bullet_list{
@@ -73,6 +74,7 @@ typedef struct player_struct {
     sfIntRect rect;
     controle_key_t *controle;
     sfClock *clock_player;
+    sfClock *clock_shooting;
     bool can_shoot;
     int nb_player;
     int orientation_player;
@@ -96,8 +98,8 @@ int up_player(sprite_t *sprite,int x, int y);
 void clock_sprite(sfClock *clock, player_struct_t *player);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void reset_rect(player_struct_t *player);
+int bullet_shoot(player_struct_t *player_one, player_struct_t *player_two);
 sprite_t *map_load_one(void);
-int bullet_shoot(player_struct_t *player, sfMouseButtonEvent mousse_click);
 bullet_list_t *add_node_bullet(player_struct_t *player);
 int create_bullet(bullet_list_t **bullet, player_struct_t *player);
 int my_struct_len(bullet_list_t *list);

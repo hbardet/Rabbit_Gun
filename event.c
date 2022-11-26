@@ -17,11 +17,10 @@ void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *play
     while(sfRenderWindow_pollEvent(window, &event)){
         if (event.type == sfEvtClosed)
             close_window(window);
-        if (event.type == sfEvtMouseButtonPressed)
-            bullet_shoot(player_one, event.mouseButton);
         if (event.type == sfEvtKeyReleased)
             memo_key_released(player_one,player_two, event.key);
-        if (event.type == sfEvtKeyPressed)
+        if (event.type == sfEvtKeyPressed){
             memo_key_pressed(player_one, player_two, event.key);
+        }
     }
 }

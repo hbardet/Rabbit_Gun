@@ -36,6 +36,7 @@ player_struct_t *make_struct_player(sfVector2f pos)
     player_struct_t *new_player = make_player(pos);
     new_player->controle = make_struct_controle();
     new_player->clock_player = sfClock_create();
+    new_player->clock_shooting = sfClock_create();
     new_player->bullet = malloc(sizeof(*new_player->bullet));
     new_player->bullet = NULL;
     new_player->can_shoot = true;
