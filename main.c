@@ -19,6 +19,7 @@ int main()
         sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
         sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
         sfRenderWindow_display(window);
+        
     }
     sfRenderWindow_destroy(window);
     return (0);

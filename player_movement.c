@@ -48,7 +48,7 @@ int memo_key_released(player_struct_t *player, sfKeyEvent key_released)
 }
 
 int detect_movement(player_struct_t *player)
-{
+{  
     sfVector2f cordo = {0,0};
     if (player->controle->move_up == true)
         cordo.y -= SPEED;

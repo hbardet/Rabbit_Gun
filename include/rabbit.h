@@ -58,6 +58,8 @@ typedef struct controle_key{
 typedef struct player_struct {
     sfSprite *sprite_player;
     controle_key_t *controle;
+    sfClock *clock_player;
+
 }player_struct_t;
 
 sfRenderWindow *setup_window(void);

@@ -28,5 +28,6 @@ player_struct_t *make_struct_player(void)
 
     new_player->sprite_player = make_player();
     new_player->controle = make_struct_controle();
+    new_player->clock_player = sfClock_create();
     return (new_player);
 }
