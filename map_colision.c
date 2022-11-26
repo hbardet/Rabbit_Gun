@@ -30,3 +30,11 @@ int colision_player(sprite_t *sprite,int x, int y)
         return 1;
     return 0;
 }
+
+int up_player(sprite_t *sprite,int x, int y)
+{
+    sfColor color = get_pixel_color(sprite,x ,y);
+    if (my_colorcmp(color,sfGreen))
+        return 0;
+    return 1;
+}
