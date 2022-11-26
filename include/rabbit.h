@@ -55,11 +55,23 @@ typedef struct controle_key{
     
 }controle_key_t;
 
+typedef struct bullet_list{
+
+    sfIntRect rect;
+    sfVector2f *position;
+    bool touching;
+    sfSprite *bullet_sprite;
+    int num_bullet;
+    struct bullet_list *next;
+}bullet_list_t;
+
 typedef struct player_struct {
+
     sfSprite *sprite_player;
     controle_key_t *controle;
     sfClock *clock_player;
 
+    bullet_list_t *bullet; 
 }player_struct_t;
 
 sfRenderWindow *setup_window(void);
@@ -74,8 +86,18 @@ int detect_movement(player_struct_t *player,sprite_t *sprite);
 int my_colorcmp(sfColor color1, sfColor color2);
 sfColor get_pixel_color(sprite_t *sprite, int x, int y);
 int colision_player(sprite_t *sprite,int x, int y);
-
-
 sprite_t *map_load_one(void);
+int bullet_shoot(player_struct_t *player, sfMouseButtonEvent mousse_click);
+bullet_list_t *add_node_bullet(player_struct_t *player);
+int create_bullet(bullet_list_t **bullet, player_struct_t *player);
+int my_struct_len(bullet_list_t *list);
+int display_bullet_on_screen(sfRenderWindow *window, player_struct_t *player);
+int move_bullet(player_struct_t *player);
+int manage_bullet(sfRenderWindow *window, player_struct_t *player);
+
+
+
+
+
 
 #endif /* RABBIT_H_ */

@@ -10,8 +10,8 @@ SRC     =   ./event.c \
 			./map1.c \
 			./player.c \
 			./player_movement.c\
-			./map_colision.c
-
+			./map_colision.c \
+			./shoot_player.c
 OBJ     =     $(SRC:.c=.o)
 
 NAME 	=	rabbitgun

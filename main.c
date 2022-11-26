@@ -17,8 +17,12 @@ int main()
         analyse_events(window, event, player_one,sprite);
         detect_movement(player_one,sprite);
         sfRenderWindow_drawSprite(window, sprite->sprite_background, NULL);
+        add_node_bullet(player_one);
+        if (my_struct_len(player_one->bullet) > 0)
+            manage_bullet(window, player_one);
         sfRenderWindow_drawSprite(window,player_one->sprite_player,NULL);
         sfRenderWindow_display(window);
+        printf("len struct = %d\n", my_struct_len(player_one->bullet));
         
     }
     sfRenderWindow_destroy(window);

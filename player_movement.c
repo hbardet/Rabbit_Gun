@@ -8,7 +8,6 @@
 #include "rabbit.h"
 #define SPEED 5.0
 
-
 controle_key_t *make_struct_controle(void)
 {
     controle_key_t *new_controle = malloc(sizeof(*new_controle));

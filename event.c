@@ -19,7 +19,10 @@ void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *play
             close_window(window);
         if (event.type == sfEvtKeyReleased)
             memo_key_released(player, event.key);
+        if (event.type == sfEvtMouseButtonPressed)
+            bullet_shoot(player, event.mouseButton);
         if (event.type == sfEvtKeyPressed)
             memo_key_pressed(player, event.key);
+        
     }
 }
