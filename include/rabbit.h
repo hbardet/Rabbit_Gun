@@ -72,12 +72,16 @@ typedef struct player_struct {
     sfSprite *sprite_player;
     sfTexture *texture_player;
     sfIntRect rect;
+    sfSprite *sprite_health;
+    sfTexture *texture_health;
+    sfIntRect rect_health;
     controle_key_t *controle;
     sfClock *clock_player;
     sfClock *clock_shooting;
     bool can_shoot;
     int nb_player;
     int orientation_player;
+    int health;
 
     bullet_list_t *bullet; 
 }player_struct_t;
@@ -104,8 +108,8 @@ bullet_list_t *add_node_bullet(player_struct_t *player);
 int create_bullet(bullet_list_t **bullet, player_struct_t *player);
 int my_struct_len(bullet_list_t *list);
 int display_bullet_on_screen(sfRenderWindow *window, player_struct_t *player);
-int move_bullet(player_struct_t *player);
-int manage_bullet(sfRenderWindow *window, player_struct_t *player);
+int move_bullet(player_struct_t *player,player_struct_t *ennemy);
+int manage_bullet(sfRenderWindow *window, player_struct_t *player,player_struct_t *ennemy);
 int destroy_bullet(player_struct_t *player);
 int delete_bullet_node(bullet_list_t **list);
 bullet_list_t *delete_last_node(bullet_list_t **list);

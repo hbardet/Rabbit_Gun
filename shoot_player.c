@@ -10,26 +10,33 @@
 #define SPEED_BULLET 20
 #define CD_SHOOT 0.1
 
-int manage_bullet(sfRenderWindow *window, player_struct_t *player)
+int manage_bullet(sfRenderWindow *window, player_struct_t *player,player_struct_t *ennemy)
 {
-    move_bullet(player);
+    move_bullet(player,ennemy);
     display_bullet_on_screen(window, player);
     return (0);
 }
 
-int move_bullet(player_struct_t *player)
+int move_bullet(player_struct_t *player,player_struct_t *ennemy)
 {
     bullet_list_t *tmp = player->bullet;
     int size;
     for (size = 0; tmp != NULL; size ++){
-        if ((tmp->position.x + tmp->velo.x > 1280 + (16 * 4) || tmp->position.x + tmp->velo.x < 0 - (16 * 4)) 
-            && tmp->touching == false){
+        if ((tmp->position.x + tmp->velo.x > 1280 + (16 * 4) || tmp->position.x + tmp->velo.x < 0 - (16 * 4))
+            && tmp->touching == false) {
             tmp->touching = true;
+        } else if (tmp->position.x >= (sfSprite_getPosition(ennemy->sprite_player).x) && tmp->position.x <= (sfSprite_getPosition(ennemy->sprite_player).x + 12) && tmp->position.y - 12 == (sfSprite_getPosition(ennemy->sprite_player).y)) {
+            tmp->touching = true;
+            ennemy->health -= 1;
+            printf("%d\n",ennemy->health);
+            move_rect(&ennemy->rect_health,64,320);
+            sfSprite_setTextureRect(ennemy->sprite_health,ennemy->rect_health);
+            tmp->position.x += tmp->velo.x;
         } else {
             sfSprite_move(tmp->bullet_sprite, tmp->velo);
             tmp->position.x += tmp->velo.x;
         }
-            tmp = tmp->next;
+        tmp = tmp->next;
     }
     return (0);
 }

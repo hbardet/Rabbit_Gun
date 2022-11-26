@@ -110,5 +110,6 @@ int detect_movement(player_struct_t *player,sprite_t *sprite)
         sfSprite_setTextureRect(player->sprite_player,player->rect);
         }
     sfSprite_move(player->sprite_player, cordo);
+    sfSprite_move(player->sprite_health, cordo);
     return (0);
 }
