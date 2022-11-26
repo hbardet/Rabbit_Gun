@@ -56,7 +56,6 @@ typedef struct controle_key{
 }controle_key_t;
 
 typedef struct bullet_list{
-
     sfIntRect rect;
     sfVector2f position;
     bool touching;
@@ -74,21 +73,25 @@ typedef struct player_struct {
     controle_key_t *controle;
     sfClock *clock_player;
     bool can_shoot;
+    int nb_player;
+    int orientation_player;
+
     bullet_list_t *bullet; 
 }player_struct_t;
 
 sfRenderWindow *setup_window(void);
 sfVector2i get_middle_screen(sfVideoMode md);
-void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player,sprite_t *sprite);
-player_struct_t *make_player(void);
-player_struct_t *make_struct_player(void);
-int memo_key_released(player_struct_t *player, sfKeyEvent key_pressed);
-int memo_key_pressed(player_struct_t *player, sfKeyEvent key_pressed);
+void analyse_events(sfRenderWindow *window, sfEvent event, player_struct_t *player_one,player_struct_t *player_two);
+player_struct_t *make_player(sfVector2f pos);
+player_struct_t *make_struct_player(sfVector2f pos);
+int memo_key_released(player_struct_t *player_one, player_struct_t *player_two, sfKeyEvent key_released);
+int memo_key_pressed(player_struct_t *player_one, player_struct_t *player_two, sfKeyEvent key_pressed);
 controle_key_t *make_struct_controle(void);
 int detect_movement(player_struct_t *player,sprite_t *sprite);
 int my_colorcmp(sfColor color1, sfColor color2);
 sfColor get_pixel_color(sprite_t *sprite, int x, int y);
 int colision_player(sprite_t *sprite,int x, int y);
+int up_player(sprite_t *sprite,int x, int y);
 void clock_sprite(sfClock *clock, player_struct_t *player);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void reset_rect(player_struct_t *player);

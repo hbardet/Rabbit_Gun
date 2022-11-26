@@ -25,7 +25,6 @@ int move_bullet(player_struct_t *player)
         if ((tmp->position.x + velo.x > 1280 + (16 * 4) || tmp->position.x + velo.x < 0 - (16 * 4)) 
             && tmp->touching == false){
             tmp->touching = true;
-            sfSprite_destroy(tmp->bullet_sprite);
         } else {
             sfSprite_move(tmp->bullet_sprite, velo);
             tmp->position.x += velo.x;
