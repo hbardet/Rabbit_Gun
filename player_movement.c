@@ -47,18 +47,18 @@ int memo_key_released(player_struct_t *player, sfKeyEvent key_released)
     return (0);
 }
 
-int detect_movement(player_struct_t *player)
-{  
+int detect_movement(player_struct_t *player,sprite_t *sprite)
+{
     sfVector2f cordo = {0,0};
+    sfVector2f cordo_player = sfSprite_getPosition(player->sprite_player);
     if (player->controle->move_up == true)
         cordo.y -= SPEED;
-    if (player->controle->move_down == true)
+    if (player->controle->move_down == true && colision_player(sprite,cordo_player.x - 40, cordo_player.y + 65) && colision_player(sprite,cordo_player.x + 60,cordo_player.y + 65))
         cordo.y += SPEED;
-    if (player->controle->move_right == true)
+    if (player->controle->move_right == true && colision_player(sprite,cordo_player.x + 64, cordo_player.y + 60))
         cordo.x += SPEED;
-    if (player->controle->move_left == true)
+    if (player->controle->move_left == true && colision_player(sprite,cordo_player.x - 48, cordo_player.y + 60))
         cordo.x -= SPEED;
-    
-    sfSprite_move(player->sprite_player,cordo);
+    sfSprite_move(player->sprite_player, cordo);
     return (0);
 }
