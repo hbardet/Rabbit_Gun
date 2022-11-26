@@ -62,6 +62,7 @@ typedef struct bullet_list{
     sfSprite *bullet_sprite;
     sfClock *clock;
     int num_bullet;
+    sfVector2f velo;
     struct bullet_list *next;
 }bullet_list_t;
 

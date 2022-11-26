@@ -18,18 +18,17 @@ int manage_bullet(sfRenderWindow *window, player_struct_t *player)
 
 int move_bullet(player_struct_t *player)
 {
-    sfVector2f velo = {12,0};
     bullet_list_t *tmp = player->bullet;
     int size;
     for (size = 0; tmp != NULL; size ++){
-        if ((tmp->position.x + velo.x > 1280 + (16 * 4) || tmp->position.x + velo.x < 0 - (16 * 4)) 
+        if ((tmp->position.x + tmp->velo.x > 1280 + (16 * 4) || tmp->position.x + tmp->velo.x < 0 - (16 * 4)) 
             && tmp->touching == false){
             tmp->touching = true;
         } else {
-            sfSprite_move(tmp->bullet_sprite, velo);
-            tmp->position.x += velo.x;
-            tmp = tmp->next;
+            sfSprite_move(tmp->bullet_sprite, tmp->velo);
+            tmp->position.x += tmp->velo.x;
         }
+            tmp = tmp->next;
     }
     return (0);
 }
@@ -83,10 +82,9 @@ sfSprite *blast_bullet(player_struct_t *player)
 int create_bullet(bullet_list_t **bullet, player_struct_t *player)
 {
     bullet_list_t *new_bullet = malloc(sizeof(*new_bullet));
-
     new_bullet->bullet_sprite = sfSprite_create();
     sfTexture *texture_bullet = sfTexture_createFromFile("asset/sprite_sheet/bullet_sprite_sheet.png", NULL);
-    sfIntRect intRect = {0,0,16,16};
+    sfIntRect intRect = {16, 16 * player->orientation_player,16,16};
     sfVector2f cordo_player = sfSprite_getPosition(player->sprite_player);
     cordo_player.x += 50;
     cordo_player.y += 10;
@@ -100,6 +98,9 @@ int create_bullet(bullet_list_t **bullet, player_struct_t *player)
     sfVector2f position_sprite = sfSprite_getPosition(new_bullet->bullet_sprite);
     new_bullet->position = position_sprite;
     new_bullet->touching = false;
+    sfVector2f velo = {0,0};
+    new_bullet->velo = velo;
+    new_bullet->velo.x = (player->orientation_player) ? (-12) : (12);
     new_bullet->next = *bullet;
     *bullet = new_bullet;
     return (0);
